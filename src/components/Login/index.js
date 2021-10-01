@@ -15,14 +15,11 @@ class Login extends Component {
 
   handleSubmit(e) {
     let { value } = e.target[0];
-    let { authedUser, location, history } = this.props;
+    let { location, history } = this.props;
     let { from } = location.state || { from: { pathname: "/" } };
 
     this.props.dispatch(setAuthedUser(value));
-
-    if (authedUser) {
-      history.replace(from);
-    }
+    history.replace(from);
     e.preventDefault();
   }
 
@@ -51,7 +48,7 @@ class Login extends Component {
 }
 
 function mapStateToProps({ users, authedUser }) {
-  console.log("$$$: ", authedUser);
+  // console.log("$$$: ", authedUser);
   return {
     users,
     authedUser,
