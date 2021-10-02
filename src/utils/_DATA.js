@@ -1,34 +1,36 @@
-// prettier-ignore
 let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
-    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-black-woman-female-600w-571471732.jpg",
+    avatarURL:
+      "https://image.shutterstock.com/image-vector/user-avatar-black-woman-female-600w-571471732.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
-      "am8ehyc8byjqgar0jgpub9": "optionTwo",
-      "loxhs1bqm25b708cmbf3g": "optionTwo",
+      am8ehyc8byjqgar0jgpub9: "optionTwo",
+      loxhs1bqm25b708cmbf3g: "optionTwo",
     },
     questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
   },
   tylermcginnis: {
     id: "tylermcginnis",
     name: "Tyler McGinnis",
-    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-260nw-579409375.jpg",
+    avatarURL:
+      "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-260nw-579409375.jpg",
     answers: {
-      "vthrdm985a262al8qx3do": "optionOne",
-      "xj352vofupe1dqz9emx13r": "optionTwo",
+      vthrdm985a262al8qx3do: "optionOne",
+      xj352vofupe1dqz9emx13r: "optionTwo",
     },
     questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
   },
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-600w-581297776.jpg",
+    avatarURL:
+      "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-600w-581297776.jpg",
     answers: {
-      "xj352vofupe1dqz9emx13r": "optionOne",
-      "vthrdm985a262al8qx3do": "optionTwo",
+      xj352vofupe1dqz9emx13r: "optionOne",
+      vthrdm985a262al8qx3do: "optionTwo",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
     },
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
@@ -176,6 +178,9 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+  console.log(
+    `authedUser: ${typeof authedUser} - qid: ${typeof qid} - authedUser: ${typeof answer}`
+  );
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

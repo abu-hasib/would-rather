@@ -63,8 +63,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  // console.log("<App state:/>: ", state);
-}
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

@@ -11,7 +11,7 @@ class Polls extends Component {
         <ul>
           <h2>{title}</h2>
           {Object.keys(questions).map((key) => (
-            <li>
+            <li key={key}>
               <hr />
               <h3>{polls[key].author} asks: </h3>
               <p>{polls[key].optionOne.text} </p>

@@ -3,62 +3,43 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { savePolls } from "../../actions/polls";
 import { saveUser } from "../../actions/users";
+import { _saveQuestionAnswer } from "../../utils/_DATA";
+import Answered from "./Answered";
+import Unanswered from "./Unanswered";
 
 class Poll extends Component {
-  state = {
-    value: "",
-  };
-
-  handleChange(e) {
-    const { value } = e.target;
+  handleChange = (value) => {
     this.setState(() => ({
       value,
     }));
-  }
+  };
 
-  handleSubmit(e) {
-    console.log("@@@: ", this.state);
-    const { id } = this.props.match.params;
-    const { authedUser } = this.props;
-    this.props.dispatch(savePolls(id, this.state.value, authedUser));
-    this.props.dispatch(saveUser);
-
+  handleSubmit = (e) => {
     e.preventDefault();
-  }
+
+    const { authedUser } = this.props;
+    const { id } = this.props.match.params;
+    let qid = id;
+    this.props.dispatch(savePolls(id, this.state.value, authedUser));
+    this.props.dispatch(saveUser(qid, this.state.value, authedUser));
+  };
   render() {
     const { id } = this.props.match.params;
-    const { polls, users } = this.props;
+    const { polls, users, answeredQs, authedUser } = this.props;
+
     return (
       <div>
-        <h1>Would You Rather</h1>
-        <img
-          src={users[polls[id].author].avatarURL}
-          style={{ height: 50, width: 50 }}
-          alt={polls[id].author}
-        />
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <div>
-            <input
-              type="radio"
-              id="optionOne"
-              name="poll"
-              value="optionOne"
-              onChange={(e) => this.handleChange(e)}
-            />
-            <label for="optionOne">{polls[id].optionOne.text}</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="optionTwo"
-              name="poll"
-              value="optionTwo"
-              onChange={(e) => this.handleChange(e)}
-            />
-            <label for="optionTwo">{polls[id].optionTwo.text}</label>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        {answeredQs.includes(id) ? (
+          <Answered polls={polls} id={id} users={users} />
+        ) : (
+          <Unanswered
+            polls={polls}
+            users={users}
+            id={id}
+            authedUser={authedUser}
+            // dispatch={this.props.dispatch}
+          />
+        )}
       </div>
     );
   }
@@ -69,6 +50,7 @@ function mapStateToProps({ polls, users, authedUser }) {
     polls,
     users,
     authedUser,
+    answeredQs: authedUser ? Object.keys(users[authedUser].answers) : null,
   };
 }
 
