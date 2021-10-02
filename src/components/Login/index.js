@@ -37,7 +37,9 @@ class Login extends Component {
               Select a user to login
             </option>
             {Object.keys(users).map((key) => (
-              <option value={key}>{users[key].name}</option>
+              <option key={key} value={key}>
+                {users[key].name}
+              </option>
             ))}
           </select>
           <input type="submit" value="Submit" />
@@ -48,7 +50,6 @@ class Login extends Component {
 }
 
 function mapStateToProps({ users, authedUser }) {
-  // console.log("$$$: ", authedUser);
   return {
     users,
     authedUser,
