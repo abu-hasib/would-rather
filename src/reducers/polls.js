@@ -1,4 +1,4 @@
-import { RECEIVE_POLLS } from "../actions/actionTypes";
+import { RECEIVE_POLLS, SAVE_POLL } from "../actions/actionTypes";
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,14 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         ...action.polls,
+      };
+    case SAVE_POLL:
+      return {
+        ...state, [action.id]: {
+          ...state[action.id], [action.answer]: {
+            ...state[action.id][action.answer], votes: state[action.id][action.answer].votes.concat(action.voter)
+          }
+        } 
       };
     default:
       return state;

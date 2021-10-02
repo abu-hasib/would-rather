@@ -3,7 +3,7 @@ let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
-    avatarURL: "",
+    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-black-woman-female-600w-571471732.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -15,7 +15,7 @@ let users = {
   tylermcginnis: {
     id: "tylermcginnis",
     name: "Tyler McGinnis",
-    avatarURL: "",
+    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-260nw-579409375.jpg",
     answers: {
       "vthrdm985a262al8qx3do": "optionOne",
       "xj352vofupe1dqz9emx13r": "optionTwo",
@@ -25,7 +25,7 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "",
+    avatarURL: "https://image.shutterstock.com/image-vector/user-avatar-man-male-boy-600w-581297776.jpg",
     answers: {
       "xj352vofupe1dqz9emx13r": "optionOne",
       "vthrdm985a262al8qx3do": "optionTwo",

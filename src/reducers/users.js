@@ -1,4 +1,4 @@
-import { RECEIVE_USERS } from "../actions/actionTypes";
+import { RECEIVE_USERS, SAVE_POLL, SAVE_USER } from "../actions/actionTypes";
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,17 @@ export default function reducer(state = {}, action) {
       return {
         ...state,
         ...action.users,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        [action.user]: {
+          ...state[action.user],
+          answers: {
+            ...state[action.user].answers,
+            [action.id]: action.answer,
+          },
+        },
       };
     default:
       return state;

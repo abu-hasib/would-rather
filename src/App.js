@@ -6,6 +6,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import Login from "./components/Login";
+import New from "./components/New";
 import AuthButton from "./global/components/AuthButton";
 import PrivateRoute from "./global/components/PrivateRoute";
 import { ProvideAuth } from "./utils/helpers";
@@ -32,6 +33,9 @@ class App extends Component {
                   <li>
                     <Link to="/leaderboard">Leaderboard</Link>
                   </li>
+                  <li>
+                    <Link to="/add">Add a new poll</Link>
+                  </li>
                 </ul>
               </nav>
 
@@ -46,6 +50,9 @@ class App extends Component {
                 </Route>
                 <Route path="/leaderboard">
                   <Leaderboard />
+                </Route>
+                <Route path="/add">
+                  <New />
                 </Route>
               </Switch>
             </div>

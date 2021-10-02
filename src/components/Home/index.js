@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, Route, Switch, withRouter } from "react-router-dom";
+import Poll from "../Poll";
 import Polls from "../Polls";
 
 class Home extends Component {
@@ -13,14 +14,14 @@ class Home extends Component {
         <h1>Home!</h1>
         <ul>
           <li>
-            <Link to={`${url}`}>Unanswered</Link>
+            <Link to={`${url}/unanswered`}>Unanswered</Link>
           </li>
           <li>
             <Link to={`${url}/answered`}>Answered</Link>
           </li>
         </ul>
         <Switch>
-          <Route exact path={path}>
+          <Route exact path={`${path}/unanswered`}>
             <Polls
               polls={polls}
               questions={unansweredQs}
@@ -34,7 +35,11 @@ class Home extends Component {
               title="Answered Questions"
             />
           </Route>
+          <Route path={`${url}/questions/:id`}>
+            <Poll />
+          </Route>
         </Switch>
+
         {/* <h2>Answered Questions</h2>
         {Object.keys(answeredQs).map((key) => (
           <div>
