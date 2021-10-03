@@ -10,9 +10,10 @@ class Polls extends Component {
       <div>
         <ul>
           <h2>{title}</h2>
-          {Object.keys(questions).map((key) => (
+          {questions.map((key) => (
             <li key={key}>
               <hr />
+              <i>{new Date(polls[key].timestamp).toDateString()}</i>
               <h3>{polls[key].author} asks: </h3>
               <p>{polls[key].optionOne.text} </p>
               <Link to={`questions/${key}`}>View Poll</Link>
