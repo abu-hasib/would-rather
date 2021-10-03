@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { _saveQuestionAnswer } from "../../utils/_DATA";
 
 export class Answered extends Component {
   render() {

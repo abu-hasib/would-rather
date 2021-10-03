@@ -4,7 +4,6 @@ import { Link, withRouter } from "react-router-dom";
 class Polls extends Component {
   render() {
     const { title, polls, questions } = this.props;
-    const { url, path } = this.props.match;
     console.log("$$$: ", this.props);
     return (
       <div>

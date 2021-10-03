@@ -1,4 +1,4 @@
-import { RECEIVE_USERS, SAVE_POLL, SAVE_USER } from "../actions/actionTypes";
+import { RECEIVE_USERS, SAVE_USER } from "../actions/actionTypes";
 
 export default function reducer(state = {}, action) {
   switch (action.type) {

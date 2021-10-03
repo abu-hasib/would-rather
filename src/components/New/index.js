@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addPoll } from "../../actions/polls";
 import { formatQuestion } from "../../utils/helpers";
-import { _saveQuestion, _saveQuestionAnswer } from "../../utils/_DATA";
+import { _saveQuestion } from "../../utils/_DATA";
 
 class New extends Component {
   state = {

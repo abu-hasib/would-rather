@@ -35,7 +35,7 @@ export class Unanswered extends Component {
     _saveQuestionAnswer(payload).catch((err) => console.error("ERR:: ", err));
   }
   render() {
-    const { id, users, polls, handleChange } = this.props;
+    const { id, users, polls } = this.props;
     return (
       <div>
         <h1>Would You Rather</h1>
