@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { savePolls } from "../../actions/polls";
 import { saveUser } from "../../actions/users";
-import { _saveQuestionAnswer } from "../../utils/_DATA";
 import Answered from "./Answered";
 import Unanswered from "./Unanswered";
 
