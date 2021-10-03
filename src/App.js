@@ -51,9 +51,9 @@ class App extends Component {
                 <Route path="/leaderboard">
                   <Leaderboard />
                 </Route>
-                <Route path="/add">
+                <PrivateRoute path="/add">
                   <New />
-                </Route>
+                </PrivateRoute>
               </Switch>
             </div>
           </Router>

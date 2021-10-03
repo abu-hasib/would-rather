@@ -1,4 +1,4 @@
-import { RECEIVE_POLLS, SAVE_POLL } from "./actionTypes";
+import { ADD_POLL, RECEIVE_POLLS, SAVE_POLL } from "./actionTypes";
 
 export function receivePolls(polls) {
   return {
@@ -13,5 +13,12 @@ export function savePolls(id, answer, voter) {
     answer,
     id,
     voter,
+  };
+}
+
+export function addPoll(question) {
+  return {
+    type: ADD_POLL,
+    question,
   };
 }
