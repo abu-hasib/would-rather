@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import FourO4 from "./FourO4";
 import handleInitData from "./actions/shared";
 import "./App.css";
 import Home from "./components/Home";
@@ -54,6 +55,9 @@ class App extends Component {
                 <PrivateRoute path="/add">
                   <New />
                 </PrivateRoute>
+                <Route path="*">
+                  <FourO4 />
+                </Route>
               </Switch>
             </div>
           </Router>
