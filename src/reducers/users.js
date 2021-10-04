@@ -10,11 +10,11 @@ export default function reducer(state = {}, action) {
     case SAVE_USER:
       return {
         ...state,
-        [action.user]: {
-          ...state[action.user],
+        [action.authedUser]: {
+          ...state[action.authedUser],
           answers: {
-            ...state[action.user].answers,
-            [action.id]: action.answer,
+            ...state[action.authedUser].answers,
+            [action.qid]: action.answer,
           },
         },
       };

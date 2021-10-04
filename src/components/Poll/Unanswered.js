@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { savePolls } from "../../actions/polls";
+import { handleSavePoll } from "../../actions/polls";
 import { saveUser } from "../../actions/users";
-import { _saveQuestionAnswer } from "../../utils/_DATA";
 
 export class Unanswered extends Component {
   state = {
@@ -19,7 +18,7 @@ export class Unanswered extends Component {
     e.preventDefault();
     console.log("@@@: ", this.props);
 
-    const { id, authedUser } = this.props;
+    const { id, authedUser, dispatch } = this.props;
     const { value } = this.state;
 
     console.log(`id:  ${id} -  authed: ${authedUser} - value: ${value}`);
@@ -30,9 +29,12 @@ export class Unanswered extends Component {
       answer: value,
     };
 
-    this.props.dispatch(savePolls(id, this.state.value, authedUser));
-    this.props.dispatch(saveUser(id, this.state.value, authedUser));
-    _saveQuestionAnswer(payload).catch((err) => console.error("ERR:: ", err));
+    dispatch(saveUser(payload));
+    dispatch(handleSavePoll(payload));
+
+    // this.props.dispatch(savePolls(id, this.state.value, authedUser));
+    // this.props.dispatch(saveUser(id, this.state.value, authedUser));
+    // _saveQuestionAnswer(payload).catch((err) => console.error("ERR:: ", err));
   }
   render() {
     const { id, users, polls } = this.props;

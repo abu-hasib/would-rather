@@ -5,6 +5,10 @@ import Poll from "../Poll";
 import Polls from "../Polls";
 
 class Home extends Component {
+  componentDidMount() {
+    const { history } = this.props;
+    history.replace("home/unanswered");
+  }
   render() {
     const { polls, answeredQs, unansweredQs } = this.props;
     const { url, path } = this.props.match;
