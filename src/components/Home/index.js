@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     const { polls, answeredQs, unansweredQs } = this.props;
     const { url, path } = this.props.match;
-    console.log("@@@: ", unansweredQs);
+    console.log("@@@: ", answeredQs);
     return (
       <div>
         <h1>Home!</h1>
@@ -57,6 +57,9 @@ function mapStateToProps({ polls, users, authedUser }) {
   const answers = authedUser ? Object.keys(users[authedUser].answers) : [];
   const questions = Object.keys(polls);
 
+  console.log("###: ", answers);
+  console.log("$$$: ", questions);
+
   return {
     polls: polls,
     answeredQs: authedUser
@@ -65,7 +68,7 @@ function mapStateToProps({ polls, users, authedUser }) {
         )
       : null,
     unansweredQs: questions
-      .filter((question) => !answers.includes(question[0]))
+      .filter((question) => !answers.includes(question))
       .sort((a, b) => polls[b].timestamp - polls[a].timestamp),
   };
 }
