@@ -37,7 +37,6 @@ class App extends Component {
                 <PrivateRoute path="/add">
                   <New />
                 </PrivateRoute>
-                <Route path="/"></Route>
                 <Route path="*">
                   <FourO4 />
                 </Route>

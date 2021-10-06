@@ -22,7 +22,7 @@ export default function AuthButton() {
         className="p-2 ml-2 bg-yellow-400 text-black font-semibold leading-none border border-yellow-400 rounded hover:border-transparent hover:bg-yellow-500"
         onClick={() => {
           dispatch(setAuthedUser(null));
-          auth.signout(() => history.push("/login"));
+          auth.signout(() => history.push("/"));
         }}
       >
         Sign out
