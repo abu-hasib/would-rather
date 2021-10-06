@@ -1,16 +1,15 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import FourO4 from "./FourO4";
 import handleInitData from "./actions/shared";
-import "./App.css";
 import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import Login from "./components/Login";
 import New from "./components/New";
-import AuthButton from "./global/components/AuthButton";
 import PrivateRoute from "./global/components/PrivateRoute";
 import { ProvideAuth } from "./utils/helpers";
+import Navigation from "./components/Navigation";
 
 class App extends Component {
   componentDidMount() {
@@ -18,28 +17,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <ProvideAuth>
           <Router>
-            <AuthButton />
             <div>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/home">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Users</Link>
-                  </li>
-                  <li>
-                    <Link to="/leaderboard">Leaderboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/add">Add a new poll</Link>
-                  </li>
-                </ul>
-              </nav>
-
+              <Navigation />
               {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
               <Switch>
@@ -49,12 +31,13 @@ class App extends Component {
                 <Route path="/login">
                   <Login />
                 </Route>
-                <Route path="/leaderboard">
+                <PrivateRoute path="/leaderboard">
                   <Leaderboard />
-                </Route>
+                </PrivateRoute>
                 <PrivateRoute path="/add">
                   <New />
                 </PrivateRoute>
+                <Route path="/"></Route>
                 <Route path="*">
                   <FourO4 />
                 </Route>

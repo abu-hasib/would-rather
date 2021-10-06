@@ -16,12 +16,10 @@ export class Unanswered extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("@@@: ", this.props);
 
     const { id, authedUser, dispatch } = this.props;
     const { value } = this.state;
 
-    console.log(`id:  ${id} -  authed: ${authedUser} - value: ${value}`);
 
     const payload = {
       authedUser,
@@ -39,36 +37,52 @@ export class Unanswered extends Component {
   render() {
     const { id, users, polls } = this.props;
     return (
-      <div>
-        <h1>Would You Rather</h1>
-        <img
-          src={users[polls[id].author].avatarURL}
-          style={{ height: 50, width: 50 }}
-          alt={polls[id].author}
-        />
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <div>
-            <input
-              type="radio"
-              id="optionOne"
-              name="poll"
-              value="optionOne"
-              onChange={(e) => this.handleChange(e.target.value)}
-            />
-            <label for="optionOne">{polls[id].optionOne.text}</label>
+      <div className="max-w-sm py-1">
+        <div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
+          <img
+            className="rounded-t-lg"
+            src={users[polls[id].author].avatarURL}
+            alt=""
+          />
+          <div className="py-6 px-8 rounded-lg bg-white">
+            <h1 className="text-gray-700 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">
+              Would you rather
+            </h1>
+            <form onSubmit={(e) => this.handleSubmit(e)}>
+              <label className="flex space-x-2 radio py-2 cursor-pointer">
+                <input
+                  className=""
+                  type="radio"
+                  id="optionOne"
+                  name="poll"
+                  value="optionOne"
+                  onChange={(e) => this.handleChange(e.target.value)}
+                />
+                <div className="text-lg" for="optionOne">
+                  {polls[id].optionOne.text}
+                </div>
+              </label>
+              <label className="flex space-x-2 radio py-2 cursor-pointer">
+                <input
+                  type="radio"
+                  id="optionTwo"
+                  name="poll"
+                  value="optionTwo"
+                  onChange={(e) => this.handleChange(e.target.value)}
+                />
+                <div className="text-lg" for="optionTwo">
+                  {polls[id].optionTwo.text}
+                </div>
+              </label>
+              <button
+                className="mt-4 py-2 px-4 w-full bg-yellow-400 text-gray-800 font-bold rounded-md shadow-md hover:shadow-lg transition duration-300"
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
           </div>
-          <div>
-            <input
-              type="radio"
-              id="optionTwo"
-              name="poll"
-              value="optionTwo"
-              onChange={(e) => this.handleChange(e.target.value)}
-            />
-            <label for="optionTwo">{polls[id].optionTwo.text}</label>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        </div>
       </div>
     );
   }

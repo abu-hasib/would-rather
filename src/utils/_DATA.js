@@ -178,9 +178,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  console.log(
-    `authedUser: ${typeof authedUser} - qid: ${typeof qid} - authedUser: ${typeof answer}`
-  );
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
