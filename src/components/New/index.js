@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addPoll } from "../../actions/polls";
+import { handleAddPoll } from "../../actions/polls";
 import { formatQuestion } from "../../utils/helpers";
-import { _saveQuestion } from "../../utils/_DATA";
 
 class New extends Component {
   state = {
@@ -23,9 +22,7 @@ class New extends Component {
     };
     let question = formatQuestion(payload);
 
-    console.log("*****: ", authedUser);
-    dispatch(addPoll(question));
-    _saveQuestion(payload).then((result) => console.log("RESUTL: ", result));
+    dispatch(handleAddPoll(question));
     history.push("/home");
   };
 
@@ -39,26 +36,38 @@ class New extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Would You Rather</h1>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
-          <label>
+      <div className="container mx-auto">
+        <div className="flex flex-col my-12 items-center space-y-6">
+          <h1 className="font-semibold text-2xl leading-tight">
+            Would You Rather
+          </h1>
+          <form
+            className="flex flex-col w-4/12 items-center border-2 rounded-md
+             border-yellow-200 px-4 py-5 space-y-3"
+            onSubmit={(e) => this.handleSubmit(e)}
+          >
             <input
+              className="border-2 px-4 py-2 w-full rounded-md"
               type="text"
               value={this.state.optionOne}
               onChange={(e) => this.handle1stChange(e.target.value)}
               placeholder="Type option one text here"
             />
-          </label>
-          <p>Or</p>
-          <input
-            type="text"
-            value={this.state.optionTwo}
-            onChange={(e) => this.handle2ndChange(e.target.value)}
-            placeholder="Type option two text here"
-          />
-          <input type="submit" value="Submit" />
-        </form>
+            <p className="font-light">OR</p>
+            <input
+              className="border-2 px-4 py-2 w-full rounded-md"
+              type="text"
+              value={this.state.optionTwo}
+              onChange={(e) => this.handle2ndChange(e.target.value)}
+              placeholder="Type option two text here"
+            />
+            <input
+              className="p-2 w-full rounded-md bg-yellow-400"
+              type="submit"
+              value="Submit"
+            />
+          </form>
+        </div>
       </div>
     );
   }

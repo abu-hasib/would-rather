@@ -14,11 +14,11 @@ export function setAuthedUser(id) {
   };
 }
 
-export function saveUser(id, answer, user) {
+export function saveUser({ authedUser, qid, answer }) {
   return {
     type: SAVE_USER,
-    id,
+    authedUser,
+    qid,
     answer,
-    user,
   };
 }

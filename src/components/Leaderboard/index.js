@@ -4,24 +4,31 @@ import { connect } from "react-redux";
 class Leaderboard extends Component {
   render() {
     const { users, leaders } = this.props;
-    console.log("thsosss: ", this.props);
     return (
-      <div>
+      <div className="container mx-auto my-2">
         <h1>Leaderboard!</h1>
-        <p>
-          {leaders.map((leader) => (
-            <div key={leader}>
-              <img
-                src={users[leader].avatarURL}
-                alt={users[leader].name}
-                style={{ height: 50, width: 50 }}
-              />
-              <h5>{users[leader].name}</h5>
-              <p>Questions: {users[leader].questions.length}</p>
-              <p>Answers: {Object.keys(users[leader].answers).length}</p>
+        <div className="flex flex-col items-center  space-y-2">
+          {leaders.map((leader, key) => (
+            <div
+              className="flex w-4/12 border-2 border-yellow-200 space-x-5 p-5 rounded-md"
+              key={leader}
+            >
+              <div className="border-r-2 pr-4 h-full border-yellow-400">
+                <img
+                  className="rounded-full"
+                  src={users[leader].avatarURL}
+                  alt={users[leader].name}
+                  style={{ height: 100, width: 100 }}
+                />
+              </div>
+              <div className="space-y-2">
+                <h5 className="font-semibold text-xl">{users[leader].name}</h5>
+                <p>Questions: {users[leader].questions.length}</p>
+                <p>Answers: {Object.keys(users[leader].answers).length}</p>
+              </div>
             </div>
           ))}
-        </p>
+        </div>
       </div>
     );
   }
