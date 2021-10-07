@@ -12,7 +12,7 @@ const Navigation = () => {
         <NavLink
           className="block mr-4 p-2 ml-2 bg-white text-black font-semibold leading-none border border-gray-100 rounded hover:border-transparent hover:bg-gray-100"
           activeClassName="active"
-          to="/home"
+          to="/"
         >
           Home
         </NavLink>
