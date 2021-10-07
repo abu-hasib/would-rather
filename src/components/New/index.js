@@ -23,7 +23,7 @@ class New extends Component {
     let question = formatQuestion(payload);
 
     dispatch(handleAddPoll(question));
-    history.push("/home");
+    history.push("/");
   };
 
   handle1stChange = (value) => {
