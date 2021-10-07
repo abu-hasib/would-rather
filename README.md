@@ -5,7 +5,7 @@ A polling app built with React and Redux for state management.
 ## Project Setup
 
 - clone the Project - `git clone https://github.com/abu-hasib/would-rather.git`
-- install the dependencies - `npm install`
+- install the dependencies - `npm install or yarn`
 
 In the project directory, you can run:
 
