@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect, withRouter } from "react-router-dom";
 import { handleSavePoll } from "../../actions/polls";
 import { saveUser } from "../../actions/users";
 
@@ -20,7 +21,6 @@ export class Unanswered extends Component {
     const { id, authedUser, dispatch } = this.props;
     const { value } = this.state;
 
-
     const payload = {
       authedUser,
       qid: id,
@@ -36,7 +36,9 @@ export class Unanswered extends Component {
   }
   render() {
     const { id, users, polls } = this.props;
-    return (
+    const { params } = this.props.match;
+
+    return polls[params.id] ? (
       <div className="max-w-sm py-1">
         <div className="bg-white relative shadow-lg hover:shadow-xl transition duration-500 rounded-lg">
           <img
@@ -84,8 +86,10 @@ export class Unanswered extends Component {
           </div>
         </div>
       </div>
+    ) : (
+      <Redirect to="/error" />
     );
   }
 }
 
-export default connect()(Unanswered);
+export default withRouter(connect()(Unanswered));

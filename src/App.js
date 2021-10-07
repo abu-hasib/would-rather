@@ -25,9 +25,9 @@ class App extends Component {
               {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
               <Switch>
-                <PrivateRoute path="/home">
+                {/* <PrivateRoute path="/home">
                   <Home />
-                </PrivateRoute>
+                </PrivateRoute> */}
                 <Route path="/login">
                   <Login />
                 </Route>
@@ -37,9 +37,13 @@ class App extends Component {
                 <PrivateRoute path="/add">
                   <New />
                 </PrivateRoute>
-                <Route path="*">
+                <Route path="/error">
                   <FourO4 />
                 </Route>
+
+                <PrivateRoute path="/">
+                  <Home />
+                </PrivateRoute>
               </Switch>
             </div>
           </Router>

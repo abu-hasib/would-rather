@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FourO4 = () => {
   return (
@@ -9,9 +10,9 @@ const FourO4 = () => {
 
       <div class="absolute w-screen bottom-0 mb-6 text-white text-center font-sans text-xl">
         <span class="opacity-50">Take me back to</span>
-        <a class="border-b" href="http://localhost:3000">
+        <Link class="border-b" to="/">
           Home
-        </a>
+        </Link>
       </div>
     </div>
   );
